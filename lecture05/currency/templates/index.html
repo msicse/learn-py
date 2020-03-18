@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Converter</title>
+    <script>
+         document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector("#currency-form").onsubmit = ()=>{
+                const request = new XMLHttpRequest();
+                const currency = document.querySelector("#cur").value;
+                request.open('POST', '/convert');
+                request.onload = ()=>{
+                    const data = JSON.parse()
+                }
+            }
+         });
+    </script>
+</head>
+<body>
+    <form id="currency-form" method="post">
+        <input id="cur" type="text" name="currency" placeholder="Currency">
+        <input type="submit" name="" value="Get Exchange Rate">
+    </form>
+    <div id="result"></div>
+</body>
+</html>
