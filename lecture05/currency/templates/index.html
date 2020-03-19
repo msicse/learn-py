@@ -9,23 +9,36 @@
             
             document.querySelector("#currency-form").onsubmit = () => {
 
+                // Initialize new request
                 const request = new XMLHttpRequest();
+
                 const currency = document.querySelector("#currency").value;
+
+                // Call the request
                 request.open('POST', '/convert');
 
+
+                // Callback function when request completed
                 request.onload = () => {
+
+                    // Extract JSON data from request
                     const data = JSON.parse(request.responseText);
+
+                    // Update result div
                     if (data.success) {
                         const contents = `1 USD is equal to ${data.rate} ${currency}`;
                         document.querySelector("#result").innerHTML = contents;
                     } else {
                         document.querySelector("#result").innerHTML = "There was an error";
                     }
+
                 }
 
+                // Add data to send with request
                 const data = new FormData();
                 data.append('currency', currency);
 
+                // send request
                 request.send(data);
                 return false;
             }
